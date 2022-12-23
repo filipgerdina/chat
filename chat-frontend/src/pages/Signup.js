@@ -47,7 +47,15 @@ function Signup() {
 
     async function handleSignup(e) {
         e.preventDefault();
-        if (!image) return alert("Please upload your profile picture");
+        if (!image) {
+            signupUser({ name, email, password, picture: "http://res.cloudinary.com/dd5tovibf/image/upload/v1671759620/gk9rqzkbi1d6v4coaou0.png" }).then(({ data }) => {
+                if (data) {
+                    console.log(data);
+                    navigate("/chat");
+                }
+                return
+            });
+        }
         const url = await uploadImage(image);
         console.log(url);
         // signup the user
