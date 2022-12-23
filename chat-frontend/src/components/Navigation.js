@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
 import logo from "../assets/logo.png";
 function Navigation() {
-    const user = null;
+    const user = useSelector((state) => state.user);
     console.log(user);
     const [logoutUser] = useLogoutUserMutation();
     async function handleLogout(e) {
